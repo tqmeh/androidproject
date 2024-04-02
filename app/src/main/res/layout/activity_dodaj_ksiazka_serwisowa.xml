@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    android:background="@color/primary"
+    tools:context=".activites.DodajKsiazkaSerwisowa">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageBack"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:padding="@dimen/_5sdp"
+        android:src="@drawable/ic_back"
+        android:tint="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/zjdecieProfilowe"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/tlo_zdjecia"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:riv_corner_radius="@dimen/_8sdp" />
+    <TextView
+        android:id="@+id/textName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="36dp"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="1"
+        android:text="TextView"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_14ssp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/zjdecieProfilowe"
+        app:layout_constraintTop_toTopOf="parent" />
+
+        <Switch
+            android:id="@+id/switchOlej"
+            android:layout_width="363dp"
+            android:layout_height="66dp"
+            android:layout_marginTop="40dp"
+            android:text="Olej"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.333"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textNazwa" />
+
+        <Switch
+        android:id="@+id/switchKlocki"
+        android:layout_width="363dp"
+        android:layout_height="66dp"
+        android:layout_marginTop="24dp"
+        android:text="Klocki"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/switchOlej" />
+
+    <Switch
+        android:id="@+id/switchTarcze"
+        android:layout_width="363dp"
+        android:layout_height="66dp"
+        android:layout_marginTop="24dp"
+        android:text="Tarcze hamulcowe"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/switchKlocki" />
+
+    <Switch
+        android:id="@+id/switchFiltry"
+        android:layout_width="363dp"
+        android:layout_height="66dp"
+        android:layout_marginTop="24dp"
+        android:text="Filtry"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/switchTarcze" />
+
+    <Switch
+        android:id="@+id/switchOponaPrzod"
+        android:layout_width="363dp"
+        android:layout_height="66dp"
+        android:layout_marginTop="24dp"
+        android:text="Opona przód"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/switchFiltry" />
+
+    <Switch
+        android:id="@+id/switchOponaTyl"
+        android:layout_width="363dp"
+        android:layout_height="66dp"
+        android:layout_marginTop="24dp"
+        android:text="Opona tył"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/switchOponaPrzod" />
+
+    <Switch
+        android:id="@+id/switchAkumulator"
+        android:layout_width="363dp"
+        android:layout_height="66dp"
+        android:layout_marginTop="24dp"
+        android:text="Akumulator"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/switchOponaTyl" />
+
+    <Switch
+        android:id="@+id/switchPlynHamulcowy"
+        android:layout_width="363dp"
+        android:layout_height="66dp"
+        android:layout_marginTop="24dp"
+        android:text="Płyn hamulcowy"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/switchAkumulator" />
+
+    <Switch
+        android:id="@+id/switchPrzeglad"
+        android:layout_width="363dp"
+        android:layout_height="66dp"
+        android:layout_marginTop="24dp"
+        android:text="Przegląd"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/switchPlynHamulcowy" />
+
+    <Switch
+        android:id="@+id/switchInne"
+        android:layout_width="363dp"
+        android:layout_height="66dp"
+        android:layout_marginTop="24dp"
+        android:text="Inne"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/switchPrzeglad" />
+
+    <TextView
+        android:id="@+id/textCena"
+        android:layout_width="108dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="60dp"
+        android:text="Cena"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.083"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/switchInne" />
+
+        <EditText
+            android:id="@+id/WpiszCene"
+            android:layout_width="256dp"
+            android:gravity="center"
+            android:hint="Wpisz cenę"
+            android:imeOptions="actionDone"
+            android:background="@drawable/tlo_czat_input"
+            android:layout_height="48dp"
+            android:layout_marginTop="56dp"
+            android:importantForAutofill="no"
+            android:inputType="numberDecimal"
+            android:textColor="@color/white"
+            android:textColorHint="@color/secondary_text"
+            app:layout_constraintEnd_toEndOf="parent"
+
+            app:layout_constraintStart_toEndOf="@+id/textCena"
+            app:layout_constraintTop_toBottomOf="@+id/switchInne" />
+
+        <ImageView
+            android:id="@+id/imageZapisz"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginStart="176dp"
+            android:layout_marginTop="68dp"
+            android:padding="@dimen/_5sdp"
+            android:src="@drawable/ic_save"
+            android:tint="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/WpiszCene" />
+
+        <TextView
+            android:id="@+id/textNazwa"
+            android:layout_width="108dp"
+            android:layout_height="41dp"
+            android:layout_marginTop="104dp"
+            android:text="Nazwa"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.079"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textWpisDaty" />
+
+        <EditText
+            android:id="@+id/WpiszNazwe"
+            android:layout_width="256dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="104dp"
+            android:background="@drawable/tlo_czat_input"
+            android:gravity="center"
+            android:hint="Wpisz nazwę"
+            android:imeOptions="actionDone"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:textColor="@color/white"
+
+            android:textColorHint="@color/secondary_text"
+            app:layout_constraintStart_toEndOf="@+id/textNazwa"
+            app:layout_constraintTop_toBottomOf="@+id/textWpisDaty" />
+
+        <TextView
+            android:id="@+id/textWpisDaty"
+            android:layout_width="372dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="24dp"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="Podaj date:"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_14ssp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.615"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textName" />
+
+        <Button
+            android:id="@+id/buttonWybierzDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Wybierz Date"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:backgroundTint="#C0C0C0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.059"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textWpisDaty" />
+
+        <TextView
+            android:id="@+id/textViewWybranaData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:layout_marginEnd="80dp"
+            android:text=""
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/buttonWybierzDate"
+            app:layout_constraintTop_toBottomOf="@+id/textWpisDaty" />
+
+        <DatePicker
+            android:id="@+id/datePicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textName"
+            android:background="@android:color/white"/>
+
+        <Button
+            android:id="@+id/buttonZapisz"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/datePicker"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="24dp"
+            android:onClick="saveDate"
+            android:text="Zapisz"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/datePicker" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
