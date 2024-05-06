@@ -67,6 +67,11 @@ public class MainActivity extends AppCompatActivity {
             Intent intent=new Intent(MainActivity.this,KsiazkaSerwisowa.class);
             startActivity(intent);
         });
+        binding.imageSMS.setOnClickListener(view ->
+        {
+            Intent intent=new Intent(MainActivity.this,WyslijSMS.class);
+            startActivity(intent);
+        });
 
     }
     private void LadowanieUzytkownikaDanych()
