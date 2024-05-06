@@ -2,9 +2,13 @@ package com.example.projektandroid.activites;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
@@ -14,6 +18,7 @@ import android.provider.MediaStore;
 import android.util.Base64;
 import android.widget.ImageView;
 import android.widget.Toast;
+
 
 import com.example.projektandroid.R;
 import com.example.projektandroid.adapters.SocialAdapter;
@@ -34,6 +39,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
+import android.content.DialogInterface;
+
+
+
 
 public class DodajSocial extends AppCompatActivity {
     private ActivityDodajSocialBinding binding;
@@ -44,6 +53,9 @@ public class DodajSocial extends AppCompatActivity {
     String tekstSocial;
     String numerDokumentu;
     boolean Sprawdz;
+    private static final int REQUEST_IMAGE_CAPTURE = 1;
+    private static final int PERMISSION_REQUEST_CAMERA = 0;
+    private static final String PERMISSION_CAMERA = android.Manifest.permission.CAMERA;
 
     private CountDownLatch latch = new CountDownLatch(1);
     @Override
@@ -99,7 +111,7 @@ public class DodajSocial extends AppCompatActivity {
     }
     private void Listener()
     {
-        binding.DodajZdjecie.setOnClickListener(v -> openGallery());
+        binding.DodajZdjecie.setOnClickListener(v -> ZapytajczyMozna());
         binding.wyslij.setOnClickListener(v->{
 
                 DodajWiadomosc();
@@ -294,5 +306,57 @@ public void DodajNumer()
     }
 
 }
+    private void openCamera() {
+            Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+                startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+            } else {
+                Toast.makeText(this, "Brak aplikacji aparatu", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+
+private void wybierzAkcje()
+{
+    final CharSequence[] options={"Zrob zdjecie", "Wybierz z Galerii","Anuluj"};
+    AlertDialog.Builder builder = new AlertDialog.Builder(this);
+    builder.setTitle("Dodaj zdjęcie");
+    builder.setItems(options, new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialog, int item) {
+            if (options[item].equals("Zrób zdjęcie")) {
+                openCamera();
+            } else if (options[item].equals("Wybierz z galerii")) {
+                openGallery();
+            } else if (options[item].equals("Anuluj")) {
+                dialog.dismiss();
+            }
+        }
+    });
+    builder.show();
+
+
+}
+    private void ZapytajczyMozna() {
+        if (ContextCompat.checkSelfPermission(this, PERMISSION_CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            // Brak uprawnień do aparatu, poproś użytkownika o nie
+            ActivityCompat.requestPermissions(this, new String[]{PERMISSION_CAMERA}, PERMISSION_REQUEST_CAMERA);
+        } else {
+            // Uprawnienia są już przyznane, możesz kontynuować
+            openCamera();
+        }
+
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            Bitmap imageBitmap = (Bitmap) extras.get("data"); // Pobierz zdjęcie z danych zwróconych przez kamerę
+            binding.DodajZdjecie.setImageBitmap(imageBitmap); // Ustaw zdjęcie w ImageView
+            wybraneZdjecie=imageBitmap;
+        }
+    }
+
 
 }

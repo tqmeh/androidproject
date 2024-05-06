@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/primary"
     tools:context=".activites.DodajSocial">
+
     <com.makeramen.roundedimageview.RoundedImageView
         android:id="@+id/zjdecieProfilowe"
         android:layout_width="@dimen/_30sdp"
@@ -85,7 +86,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        tools:srcCompat="@tools:sample/avatars"
+        android:onClick="openCamera"/>
 
     <TextView
         android:id="@+id/textView"
