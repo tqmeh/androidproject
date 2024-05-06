@@ -12,6 +12,8 @@ import com.example.projektandroid.R;
 import com.example.projektandroid.databinding.ActivityLogowanieBinding;
 import com.example.projektandroid.utillites.Constants;
 import com.example.projektandroid.utillites.PreferenceManager;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -41,6 +43,9 @@ public class Logowanie extends AppCompatActivity {
         binding=ActivityLogowanieBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         setListeners();
+        AdView adView=binding.adView;
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
     }
     private void setListeners()
     {
