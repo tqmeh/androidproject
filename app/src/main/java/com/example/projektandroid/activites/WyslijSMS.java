@@ -1,8 +1,11 @@
 package com.example.projektandroid.activites;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -10,6 +13,9 @@ import android.os.Bundle;
 import android.util.Base64;
 import android.view.View;
 import android.widget.Toast;
+import android.telephony.SmsManager;
+
+
 
 import com.example.projektandroid.R;
 import com.example.projektandroid.databinding.ActivityHistoriaBinding;
@@ -19,10 +25,12 @@ import com.example.projektandroid.utillites.PreferenceManager;
 
 public class WyslijSMS extends AppCompatActivity {
 
+    private static final int REQUEST_SEND_SMS = 1;
     private ActivityWyslijSmsBinding binding;
     private PreferenceManager preferenceManager;
     String numertelefonu,trescsms;
     String NazwaUzytkownika;
+    private static final String PERMISSION_SMS = android.Manifest.permission.SEND_SMS;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,16 +75,22 @@ public class WyslijSMS extends AppCompatActivity {
         } else if (dlugoscnumerutelefonu < 9) {
             Toast.makeText(getApplicationContext(), "Numer telefonu za krótki", Toast.LENGTH_SHORT).show();
         } else {
-            Intent intent = new Intent(Intent.ACTION_SENDTO);
-            intent.setData(Uri.parse("smsto:" + numertelefonu));
-            intent.putExtra("sms_body", trescsms);
-
-            if (intent.resolveActivity(getPackageManager()) != null) {
-                startActivity(intent);
-                Toast.makeText(getApplicationContext(), "Wysłano SMS do " + numertelefonu, Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(getApplicationContext(), "Nie wysłano SMS", Toast.LENGTH_SHORT).show();
+            if (ContextCompat.checkSelfPermission(this, PERMISSION_SMS)
+                    != PackageManager.PERMISSION_GRANTED) {
+                // Jeśli nie ma, poproś użytkownika o uprawnienie
+                ActivityCompat.requestPermissions(this,
+                        new String[]{PERMISSION_SMS},
+                        REQUEST_SEND_SMS);
             }
+            else
+            {
+                SmsManager smsManager = SmsManager.getDefault();
+                smsManager.sendTextMessage(numertelefonu, null, trescsms, null, null);
+                Toast.makeText(getApplicationContext(), "Wysłano SMS do " + numertelefonu, Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(WyslijSMS.this,MainActivity.class);
+                startActivity(intent);
+            }
+
         }
     }
 
